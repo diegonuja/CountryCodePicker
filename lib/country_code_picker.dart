@@ -18,12 +18,12 @@ class CountryCodePicker extends StatefulWidget {
   final TextStyle? textStyle;
   final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry dialogPadding;
-  final EdgeInsetsGeometry dialogMargin;
   final bool showCountryOnly;
   final InputDecoration searchDecoration;
   final TextStyle? searchStyle;
   final TextStyle? dialogTextStyle;
   final WidgetBuilder? emptySearchBuilder;
+  final WidgetBuilder? closeButtonBuilder;
   final Function(CountryCode?)? builder;
   final bool enabled;
   final TextOverflow textOverflow;
@@ -97,6 +97,7 @@ class CountryCodePicker extends StatefulWidget {
     this.searchStyle,
     this.dialogTextStyle,
     this.emptySearchBuilder,
+    this.closeButtonBuilder,
     this.showOnlyCountryWhenClosed = false,
     this.alignLeft = false,
     this.showFlag = true,
@@ -114,7 +115,6 @@ class CountryCodePicker extends StatefulWidget {
     this.comparator,
     this.countryFilter,
     this.dialogPadding = const EdgeInsets.all(0.0),
-    this.dialogMargin = const EdgeInsets.all(0.0),
     this.hideSearch = false,
     this.showDropDownButton = false,
     this.dialogSize,
@@ -310,13 +310,14 @@ class CountryCodePickerState extends State<CountryCodePicker> {
         context: context,
         isScrollControlled: true,
         builder: (context) => Container(
+          height: MediaQuery.of(context).size.height,
           padding: widget.dialogPadding,
-          margin: widget.dialogMargin,
           child: SelectionDialog(
             elements,
             favoriteElements,
             showCountryOnly: widget.showCountryOnly,
             emptySearchBuilder: widget.emptySearchBuilder,
+            closeButtonBuilder: widget.closeButtonBuilder,
             searchDecoration: widget.searchDecoration,
             searchStyle: widget.searchStyle,
             textStyle: widget.dialogTextStyle,
