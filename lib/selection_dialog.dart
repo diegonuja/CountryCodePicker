@@ -82,7 +82,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              _buildCloseButton(),
+              _buildCloseButton(context),
               if (!widget.hideSearch)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
