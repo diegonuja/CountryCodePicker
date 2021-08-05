@@ -18,6 +18,7 @@ class SelectionDialog extends StatefulWidget {
   final Size? size;
   final bool hideSearch;
   final Icon? closeIcon;
+  final EdgeInsetsGeometry? dialogRowPadding;
 
   /// Background color of SelectionDialog
   final Color? backgroundColor;
@@ -47,6 +48,7 @@ class SelectionDialog extends StatefulWidget {
     this.barrierColor,
     this.hideSearch = false,
     this.closeIcon,
+    this.dialogRowPadding,
   })  : this.searchDecoration = searchDecoration.prefixIcon == null ? searchDecoration.copyWith(prefixIcon: Icon(Icons.search)) : searchDecoration,
         super(key: key);
 
@@ -95,6 +97,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
               Expanded(
                 child: ListView(
                   children: [
+                    SizedBox(height: 20),
                     widget.favoriteElements.isEmpty
                         ? const DecoratedBox(decoration: BoxDecoration())
                         : Column(
@@ -132,7 +135,8 @@ class _SelectionDialogState extends State<SelectionDialog> {
 
   Widget _buildOption(CountryCode e) {
     return Container(
-      width: 400,
+      width: double.infinity,
+      padding: widget.dialogRowPadding ?? const EdgeInsets.all(0),
       child: Flex(
         direction: Axis.horizontal,
         children: <Widget>[

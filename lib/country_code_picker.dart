@@ -18,6 +18,7 @@ class CountryCodePicker extends StatefulWidget {
   final TextStyle? textStyle;
   final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry dialogPadding;
+  final EdgeInsetsGeometry dialogRowPadding;
   final bool showCountryOnly;
   final InputDecoration searchDecoration;
   final TextStyle? searchStyle;
@@ -115,6 +116,7 @@ class CountryCodePicker extends StatefulWidget {
     this.comparator,
     this.countryFilter,
     this.dialogPadding = const EdgeInsets.all(0.0),
+    this.dialogRowPadding = const EdgeInsets.all(0.0),
     this.hideSearch = false,
     this.showDropDownButton = false,
     this.dialogSize,
@@ -276,6 +278,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               child: SelectionDialog(
                 elements,
                 favoriteElements,
+                dialogRowPadding: widget.dialogRowPadding,
                 showCountryOnly: widget.showCountryOnly,
                 emptySearchBuilder: widget.emptySearchBuilder,
                 searchDecoration: widget.searchDecoration,
@@ -315,6 +318,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
           child: SelectionDialog(
             elements,
             favoriteElements,
+            dialogRowPadding: widget.dialogRowPadding,
             showCountryOnly: widget.showCountryOnly,
             emptySearchBuilder: widget.emptySearchBuilder,
             closeButtonBuilder: widget.closeButtonBuilder,
