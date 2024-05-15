@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:country_code_picker/country_localizations.dart';
 import 'package:flutter/material.dart';
@@ -102,16 +100,16 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               CountryCodePicker(
-                dialogPadding: EdgeInsets.only(top: MediaQueryData.fromWindow(window).padding.top),
+                dialogPadding: EdgeInsets.only(top: View.of(context).padding.top),
                 onChanged: print,
                 // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                 initialSelection: 'IT',
                 favorite: ['+39', 'FR'],
                 countryFilter: ['IT', 'FR'],
                 showFlagDialog: false,
-                comparator: (a, b) => b.name.compareTo(a.name),
+                comparator: (a, b) => b.name!.compareTo(a.name!),
                 //Get the country information relevant to the initial selection
-                onInit: (code) => print("on init ${code.name} ${code.dialCode} ${code.name}"),
+                onInit: (code) => print("on init ${code?.name} ${code?.dialCode} ${code?.name}"),
               ),
               CountryCodePicker(
                 onChanged: print,
